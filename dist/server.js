@@ -18,7 +18,7 @@ app.get("/", (_req, res) => {
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import { prisma } from "../config/prisma.js";
-import { generateToken } from "../utils/jwt.js";
+import { generateToken } from "../utils/generateToken.js";
 const cookieOptions = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",

@@ -1,5 +1,5 @@
 import { prisma } from "../config/prisma.js";
-import { verifyToken } from "../utils/jwt.js";
+import { verifyToken } from "../utils/generateToken.js";
 export async function authMiddleware(req, res, next) {
     try {
         const token = req.cookies?.access_token;

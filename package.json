@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && echo Build finalizado com sucesso",
     "start": "node dist/server.js",
+    "start:prod": "node dist/server.js",
     "prisma:generate": "prisma generate",
     "prisma:studio": "prisma studio",
     "test": "echo \"Error: no test specified\" && exit 1"
