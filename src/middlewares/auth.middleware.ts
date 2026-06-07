@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { prisma } from "../config/prisma.js";
+import type { AuthenticatedRequest } from "../types/authRequest.js";
 import { verifyToken } from "../utils/generateToken.js";
 
 export async function authMiddleware(
@@ -34,7 +35,7 @@ export async function authMiddleware(
       });
     }
 
-    req.user = user;
+    (req as AuthenticatedRequest).user = user;
 
     return next();
   } catch {

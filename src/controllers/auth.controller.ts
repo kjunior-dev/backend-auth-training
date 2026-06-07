@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import type { Request, Response } from "express";
 import { prisma } from "../config/prisma.js";
+import type { AuthenticatedRequest } from "../types/authRequest.js";
 import { generateToken } from "../utils/generateToken.js";
 
 const cookieOptions = {
@@ -119,6 +120,6 @@ export async function logout(_req: Request, res: Response) {
 
 export async function me(req: Request, res: Response) {
   return res.json({
-    user: req.user,
+    user: (req as AuthenticatedRequest).user,
   });
 }
