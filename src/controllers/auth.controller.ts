@@ -96,6 +96,7 @@ export async function login(req: Request, res: Response) {
     res.cookie("access_token", token, cookieOptions);
 
     return res.json({
+      success: "Ok",
       message: "Login feito com sucesso.",
       accessToken: token,
       user: {
