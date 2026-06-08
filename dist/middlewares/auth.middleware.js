@@ -1,8 +1,15 @@
 import { prisma } from "../config/prisma.js";
 import { verifyToken } from "../utils/generateToken.js";
+function getAuthToken(req) {
+    const authorization = req.header("authorization");
+    if (authorization?.startsWith("Bearer ")) {
+        return authorization.slice("Bearer ".length).trim();
+    }
+    return req.cookies?.access_token;
+}
 export async function authMiddleware(req, res, next) {
     try {
-        const token = req.cookies?.access_token;
+        const token = getAuthToken(req);
         if (!token) {
             return res.status(401).json({
                 message: "Nao autenticado.",

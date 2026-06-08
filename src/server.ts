@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 
+import { apiAccessMiddleware } from "./middlewares/apiAccess.middleware.js";
 import authRoutes from "./routes/auth.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 
@@ -24,6 +25,7 @@ app.get("/", (_req, res) => {
   });
 });
 
+app.use("/api", apiAccessMiddleware);
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 

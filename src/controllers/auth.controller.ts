@@ -97,6 +97,7 @@ export async function login(req: Request, res: Response) {
 
     return res.json({
       message: "Login feito com sucesso.",
+      accessToken: token,
       user: {
         id: user.id,
         name: user.name,

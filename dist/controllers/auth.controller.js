@@ -79,6 +79,7 @@ export async function login(req, res) {
         res.cookie("access_token", token, cookieOptions);
         return res.json({
             message: "Login feito com sucesso.",
+            accessToken: token,
             user: {
                 id: user.id,
                 name: user.name,

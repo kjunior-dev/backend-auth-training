@@ -3,13 +3,23 @@ import { prisma } from "../config/prisma.js";
 import type { AuthenticatedRequest } from "../types/authRequest.js";
 import { verifyToken } from "../utils/generateToken.js";
 
+function getAuthToken(req: Request) {
+  const authorization = req.header("authorization");
+
+  if (authorization?.startsWith("Bearer ")) {
+    return authorization.slice("Bearer ".length).trim();
+  }
+
+  return req.cookies?.access_token;
+}
+
 export async function authMiddleware(
   req: Request,
   res: Response,
   next: NextFunction,
 ) {
   try {
-    const token = req.cookies?.access_token;
+    const token = getAuthToken(req);
 
     if (!token) {
       return res.status(401).json({

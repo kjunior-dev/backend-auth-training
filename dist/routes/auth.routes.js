@@ -5,7 +5,7 @@ import { registrationMiddleware } from "../middlewares/registration.middleware.j
 const router = Router();
 router.post("/register", registrationMiddleware, register);
 router.post("/login", login);
-router.post("/logout", logout);
+router.post("/logout", authMiddleware, logout);
 router.get("/me", authMiddleware, me);
 export default router;
 //# sourceMappingURL=auth.routes.js.map
