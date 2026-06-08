@@ -49,6 +49,7 @@ export async function register(req: Request, res: Response) {
     });
 
     return res.status(201).json({
+      success: 'Ok',
       message: "Utilizador criado com sucesso.",
       user,
     });
