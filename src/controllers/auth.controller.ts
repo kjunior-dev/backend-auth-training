@@ -49,7 +49,7 @@ export async function register(req: Request, res: Response) {
     });
 
     return res.status(201).json({
-      success: 'Ok',
+      success: true,
       message: "Utilizador criado com sucesso.",
       user,
     });
@@ -95,8 +95,8 @@ export async function login(req: Request, res: Response) {
 
     res.cookie("access_token", token, cookieOptions);
 
-    return res.json({
-      success: "Ok",
+    return res.status(200).json({
+      success: true,
       message: "Login feito com sucesso.",
       accessToken: token,
       user: {
